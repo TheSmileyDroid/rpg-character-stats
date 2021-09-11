@@ -1,0 +1,17 @@
+<h1> <%= @personagem.name %> </h1>
+<div style=" display:flex; flex-direction:'row'; ">
+    <p>- Pontos: <%= @personagem.points%> -</p>
+    <p>- HP: <%= @personagem.hp%> -</p>
+    <p>- FP: <%= @personagem.fp%> -</p>
+</div>
+<p> <%= @personagem.desc %> </p>
+<br>
+<%= link_to "Editar", edit_character_path(@personagem)%>
+<%= link_to "Voltar", root_path%>
+
+<div class="danger">
+    <%= link_to "Apagar", character_path(@personagem),
+                method: :delete,
+                data: { confirm: 'Você tem certeza?' }
+    %>
+</div>

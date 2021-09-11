@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyText
+  points: 1
+  hp: 1
+  fp: 1
+  alive: false
+
+two:
+  name: MyString
+  desc: MyText
+  points: 1
+  hp: 1
+  fp: 1
+  alive: false

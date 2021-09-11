@@ -1,0 +1,48 @@
+<%= form_with model: @personagem do |form|%>
+    <div>
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+        <% @personagem.errors.full_messages_for(:name).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :desc %><br>
+        <%= form.text_area :desc %>
+        <% @personagem.errors.full_messages_for(:desc).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :points %><br>
+        <%= form.text_field :points %>
+        <% @personagem.errors.full_messages_for(:points).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :hp %><br>
+        <%= form.text_field :hp %>
+        <% @personagem.errors.full_messages_for(:hp).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :fp %><br>
+        <%= form.text_field :fp %>
+        <% @personagem.errors.full_messages_for(:fp).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <br>
+    
+    <div>
+        <%= form.submit %>
+    </div>
+
+<% end %>
