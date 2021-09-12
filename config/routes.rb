@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'characters#index'
 
-  resources :characters
+  resources :characters do
+    resources :comentarios
+  end
 end

@@ -1,7 +1,7 @@
 class Character < ApplicationRecord
-    validates :name, presence: true
-    validates :desc, presence: true
-    validates :points, presence: true
-    validates :hp, presence: true
-    validates :fp, presence: true
+  has_many :comentarios
+
+  validates :name, presence: { message: "Necessita de um nome" }
+  validates :hp, numericality: { message: `%{value} parece errado` }
+  validates :fp, numericality: { message: `%{value} parece errado` }
 end

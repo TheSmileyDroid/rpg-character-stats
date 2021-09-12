@@ -1,17 +1,62 @@
-<h1> <%= @personagem.name %> </h1>
-<div style=" display:flex; flex-direction:'row'; ">
-    <p>- Pontos: <%= @personagem.points%> -</p>
-    <p>- HP: <%= @personagem.hp%> -</p>
-    <p>- FP: <%= @personagem.fp%> -</p>
-</div>
-<p> <%= @personagem.desc %> </p>
-<br>
-<%= link_to "Editar", edit_character_path(@personagem)%>
-<%= link_to "Voltar", root_path%>
+<div class="Container">
+    <h1> <%= @personagem.name %> </h1>
+    <div style=" display:flex; flex-direction:'row'; ">
+        <% if @personagem.points != 0 %>
+            <p>- Pontos: <%= @personagem.points%> -</p>
+        <% else %>
+            <p>- Pontos: ??? -</p>
+        <% end %>
+        <p>- HP: <%= @personagem.hp%> -</p>
+        <p>- FP: <%= @personagem.fp%> -</p>
+    </div>
+    <p> <%= @personagem.desc %> </p>
+    <br>
+    <div class="options">
+        <%= link_to "Editar", edit_character_path(@personagem)%><br>
+        <%= link_to "Voltar", root_path%>
 
-<div class="danger">
-    <%= link_to "Apagar", character_path(@personagem),
-                method: :delete,
-                data: { confirm: 'Você tem certeza?' }
-    %>
+        <div class="danger">
+            <%= link_to "Apagar", character_path(@personagem),
+                        method: :delete,
+                        data: { confirm: 'Você tem certeza?' }
+            %>
+        </div>
+    </div>
+    <br>
+    <div style="margin-top: 100px;">
+        <div style="float: right;">
+            <h4>Adicionar comentário</h4>
+            <%= form_with model: [@personagem, @personagem.comentarios.build] do |form|%>
+                <div>
+                    <%= form.label :autor %><br>
+                    <%= form.text_field :autor %>
+                    <% @personagem.errors.full_messages_for(:autor).each do |message| %>
+                        <div><%= message %></div>
+                    <% end %>
+                </div>
+
+                <div>
+                    Comentário<br>
+                    <%= form.text_area :body %>
+                    <% @personagem.errors.full_messages_for(:body).each do |message| %>
+                        <div><%= message %></div>
+                    <% end %>
+                </div>
+
+                <div>
+                    <%= form.submit %>
+                </div>
+            <%end%>
+        </div>
+        <div>
+            <h3>Comentários</h3>
+            <% @personagem.comentarios.each do |comentario| %>
+                <p>
+                    <strong> <%= comentario.autor %> </strong>
+                </p>
+                <p><%= comentario.body %></p>
+                <br>
+            <% end %>
+        </div>
+    </div>
 </div>

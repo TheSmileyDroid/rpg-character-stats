@@ -24,6 +24,24 @@ a:hover {
     text-decoration: underline;
 }
 
+.Container {
+    display: flexbox;
+    flex-direction: column;
+    width: 40%;
+}
+
+@media (max-width: 800px) {
+    .Container {
+        width: 80%;
+    }
+}
+
+.options {
+    display: inline-flexbox;
+    float: right;
+    text-align: right;
+}
+
 .danger a {
     color: orangered;
 }
